@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %} Articles {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="col-10 order-2"> <!-- colonne principale : article -->
+
+        <div class="card m-2  bg-light">
+            <div class="card-body">
+                <div class="card_title display-6">  {{ article.title }} </div>
+                <small class="card_subtitle text-muted"> Publié le {{ article.created_at|date:"j F Y H:i" }} </small>
+                <hr>
+                <p class="card-text">
+                    {{ article.text|linebreaks }}
+                </p>
+                <div class="badge bg-primary">
+                    {{ article.category.name }}
+                </div>
+            </div>
+        </div>
+
+        <div class="h5 ms-4">Commentaires</div>
+        {% if message != '' %}
+            <div class="alert alert-primary alert-dismissible fade show ms-4 col-5" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        {% for cd in comment_data %}
+        <div class="card ms-5 mb-2">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card-body">
+                        <div class="card_title h6">  {{ cd.auteur }} </div>
+                        <small class="card_subtitle text-muted"> {{ cd.created_at }} </small>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-text px-2">
+                        {{ cd.commentaire }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% empty %} <div class="text-info ms-4">Aucun commentaire pour cet article pour le moment ! </div>
+        {% endfor %}
+
+         <!-- formulaire de commentaire  -->
+
+        <form action="{% url 'article' id_article %}" method="post" class="m-2">
+            <div class="form-control">
+                {% csrf_token %}
+                <div class="mb-2">
+                    {{ comment_form.auteur|as_crispy_field }}
+                </div>
+                <div class=" mb-2">
+                    {{ comment_form.commentaire|as_crispy_field }}
+                </div>
+
+                <button value="Envoyer" type="submit" class="btn btn-primary">Envoyer</button>
+<!--                <button value="Envoyer" type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fenConfirm">Envoyer</button>-->
+            </div>
+
+
+            <!-- fenêtre modale de confirmation d'enregistrement du commentaire -->
+<!--        <div class="modal fade" id="fenConfirm">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>Publication du commentaire</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                <span class="visually-hidden">Fermer</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Confirmer la publication du commentaire ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Non</button>
+                            <button type="button" class="btn btn-primary">Oui</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>-->
+
+
+
+
+        </form>
+
+    </div>
+
+    <div class="col-2 order-1"> <!-- colonne sur le côté : titres des autres articles de la même catégorie -->
+        <ul class="list-group">
+            <li class="fw-bold text-center d-flex h5 mb-2">Article de la même catégorie : </li>
+
+            {% for a in article_titles %}
+               <li class="list-group-item">
+                    <a href="{% url 'article' a.pk %}" class="text-decoration-none"> {{ a.title }} </a>
+                </li>
+            {% empty %} C'est le seul article dans cette catégorie.
+            {% endfor %}
+
+        </ul>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} Articles {% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-10 col-sm-7 order-2"> <!-- colonne principale : articles -->
+        {% for a in articles %}
+            <div class="card m-2">
+                <div class="card-body">
+                    <div class="card_title display-6"> <a href="{% url 'article' a.pk %}" class="text-decoration-none"> {{ a.title }} </a></div>
+                    <small class="card_subtitle text-muted"> Publié le {{ a.created_at }} </small>
+                    <hr>
+                    <p class="card-text">
+                        {{ a.text|linebreaks|truncatewords:30 }}
+                        <a href="{% url 'article' a.pk %}" class="card-link text-decoration-none">En savoir plus...</a>
+                    </p>
+                    <a href="{% url 'articles_liste' a.category.name %}"
+                       class="badge bg-primary card-link text-decoration-none">
+                        {{ a.category.name }}
+                    </a>
+
+                </div>
+            </div>
+            {% empty %} <div class="text-info">Aucun article pour le moment ! Revenez plus tard ! </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-lg-2 col-sm-5 order-1"> <!-- colonne sur le côté : listes des catégories et filtres -->
+        <ul class="list-group">
+            <li class="fw-bold d-flex h5 mb-2">Catégories</li>
+            <li class="list-group-item">
+                <a href="{% url 'articles' %}" class="badge bg-primary text-decoration-none">Toutes</a>
+            </li>
+
+            {% for category_info in categories %}
+               <li class="list-group-item">
+                    <a href="{% url 'articles_liste' category_info.0 %}" class="badge bg-primary text-decoration-none"> {{ category_info.0 }} </a>
+                    <span class="badge bg-info rounded-pill">{{ category_info.1 }}</span>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+
+{% endblock content %}
+

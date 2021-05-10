@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block content %}
+
+<div class="w-100">
+    <div class="card m-3"  style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-6 order-2">
+          <img class="card-img_end" src="/static/VFE-avatar.png" alt="avatar" width="200" height="200"/>
+        </div>
+        <div class="col-md-6 order-1">
+          <div class="card-body">
+            <h5 class="card-title">A propos de ClearBlog</h5>
+            <p class="card-text">Site d'entraînement et de démonstration créé par Valérie Fernandes</p>
+            <p class="card-text"><small class="text-muted">Publié en avril 2021</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row mt-4 mx-2">
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Framework</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Django</h5>
+                    <p class="card-text">Django 3.2</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Style</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Bootstrap</h5>
+                    <p class="card-text">Bootstrap 5.0.0</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Application Django utilisée</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Django-Crispy-Form</h5>
+                    <p class="card-text">django-crispy-forms 1.11.2</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mx-2">
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Environnement de développement</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">PyCharm</h5>
+                    <p class="card-text">PyCharm Community 2020.3.5</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Gestionnaire de paquets</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">pip</h5>
+                    <p class="card-text">pip 21.1</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header fw-bold">Gestionnaire de sources</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">Git & GitHub</h5>
+                        <p class="card-text">
+                            Git version 2.31.0.windows.1 <br>
+                            Repository GitHub <a href="https://github.com/ValFer95/ClearBlog" class="card-link">Vers le dépôt GitHub</a>
+                        </p>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

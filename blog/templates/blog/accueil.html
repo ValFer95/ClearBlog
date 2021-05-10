@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block content %}
+
+<div class="w-100">
+    <div class="card m-2 align-self-start">
+        <div class="card-body">
+            <div class="card_title display-6"> Bienvenue sur ClearBlog </div>
+            <small class="card_subtitle text-muted"> Créé en avril 2021 </small>
+            <hr>
+            <p class="card-text">
+                ClearBLog est un blog que j'ai créé pour m'entraîner et concrétiser les concepts
+                Django <img src="/static/django_original_logo.svg" alt="django" width="70" height="70">
+                et Bootstrap <img src="/static/bootstrap-fill.svg" alt="bootstrap" width="28" height="28">
+                appris le long de mon auto-formation. <br>
+                ClearBLog est régulièrement agrémenté de nouveautés au gré de mes idées.
+                <img src="/static/cone-striped.svg" alt="Working on progress" width="35" height="35">
+                Il est uniquement voué à l'exercice
+                et à la démonstration !  <br><br>
+                Pour connaître le détail de l'environnement technique de développement, rendez-vous à la rubrique
+                <a href="{% url 'a_propos' %}" class="card-link text-decoration-none"> à propos</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-4 mx-2">
+        <div class="card col-md-6 pt-2 bg-light">
+            <div class="card_title display-6"> Usercases back-end </div>
+            <small class="card_subtitle text-muted"> pour l'administrateur du blog </small>
+            <hr>
+            <p class="card-text">
+                <ul>
+                    <li>Gérer les catégories (créer, modifier, supprimer)</li>
+                    <li>Gérer les articles du blog (créer, modifier, publier, supprimer)</li>
+                    <li>Gérer les commentaires du blog (modérer, supprimer)</li>
+                </ul>
+                <a href="/admin/" class="card-link text-center" target="_blank">Vers l'administration</a>
+            </p>
+
+        </div>
+        <div class="card col-md-6 pt-2 bg-light">
+            <div class="card_title display-6"> Usercases front-end </div>
+            <small class="card_subtitle text-muted"> pour l'internaute </small>
+            <hr>
+            <p class="card-text">
+                <ul>
+                    <li>Afficher l'ensemble des articles publiés</li>
+                    <li>Filtrer les articles par catégorie</li>
+                    <li>Savoir le nombre d'articles publiés dans chaque catégorie</li>
+                    <li>Consulter l'article complet</li>
+                    <li>Prendre connaissance des commentaires des internautes</li>
+                    <li>Laisser un commentaire</li>
+                </ul>
+                <a href="/blog/articles/" class="card-link text-center">Vers les articles</a>
+            </p>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
