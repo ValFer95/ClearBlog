@@ -1,3 +1,4 @@
-/static/
+/.idea/
 /venv/
 main.py
+db.sqlite3
