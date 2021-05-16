@@ -1,4 +1,5 @@
 /.idea/
 /venv/
+secrets.py
 main.py
 db.sqlite3
